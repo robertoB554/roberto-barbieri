@@ -166,10 +166,41 @@ a:hover {
   you're in the right place.
 </p>
     
+<!-- Button to show the form -->
+<button type="button" onclick="document.getElementById('contact-form').style.display='block'; document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
+  📅 Book a consultation
+</button>
 
-<a href="mailto:roberto.barbieri554@gmail.com?subject=Consulting%20Request&body=Dear%20Roberto,%0A%0AI%20would%20like%20to%20book%20a%20technical%20consultation%20with%20you.%0AHere%20are%20the%20details%20of%20my%20request:%0A%0A- Type%20of%20consulting:%20%5Bplease%20specify%20(e.g.%20electronics,%20automation,%20firmware...)%5D%0A- Estimated%20duration:%20%5B1h,%202h,%20etc.%5D%0A- Preferred%20date/time:%20%5Be.g.%20June%2012,%203:00%20PM%5D%0A- Method:%20%5Bvideo%20call,%20phone,%20email%5D%0A%0AThank%20you%20and%20I%20look%20forward%20to%20your%20reply.%0A%0ABest%20regards,%0A%5BYour%20Name%5D" target="_blank">
-  <button type="button" style="margin-bottom: 20px;">📅 Book a Consultation</button>
-</a>
+<!-- Hidden contact form -->
+<form id="contact-form" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST" style="display: none; margin-top: 20px;">
+  <input type="hidden" name="_captcha" value="false">
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" rows="7" required>
+Dear Roberto,
+
+I would like to schedule a technical consultation. Here are the details of my request:
+
+- Type of consultation: [insert field, e.g. electronics, automation, firmware...]
+- Estimated duration: [e.g. 1h, 2h]
+- Preferred date/time: [e.g. June 12, 3:00 PM]
+- Mode: [videocall, phone, email]
+
+Thank you, I look forward to your kind reply.
+
+Best regards,
+[Name and Surname]
+  </textarea>
+
+  <button type="submit">Send request</button>
+</form>
+
   
     <h2>Contact Me</h2>
     <form action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST">
