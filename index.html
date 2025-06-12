@@ -155,7 +155,41 @@ a:hover {
   sei nel posto giusto.
 </p>
   
-<a href="mailto:roberto.barbieri554@gmail.com">Test mail</a>
+<!-- Pulsante per scroll al modulo -->
+<button type="button" onclick="document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
+  📅 Prenota una consulenza
+</button>
+
+<!-- Modulo di contatto -->
+<form id="contact-form" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+
+  <label for="name">Nome:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Messaggio:</label>
+  <textarea id="message" name="message" rows="7" required>
+Buongiorno Roberto,
+
+vorrei prenotare una consulenza tecnica. Ecco i dati della mia richiesta:
+
+- Tipo di consulenza: [inserire settore es. elettronica, automazione, firmware...]
+- Durata stimata: [es. 1h, 2h]
+- Giorno/orario preferito: [es. 12 giugno, ore 15]
+- Modalità: [videocall, telefono, email]
+
+Grazie e attendo un suo cortese riscontro.
+
+Cordiali saluti,
+[Nome e Cognome]
+  </textarea>
+
+  <button type="submit">Invia richiesta</button>
+</form>
+
 
 
   <h2>Contattami</h2>
