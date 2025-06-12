@@ -155,13 +155,13 @@ a:hover {
   sei nel posto giusto.
 </p>
   
-<!-- Pulsante per scroll al modulo -->
-<button type="button" onclick="document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
+<!-- Pulsante per mostrare il modulo -->
+<button type="button" onclick="document.getElementById('contact-form').style.display='block'; document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
   📅 Prenota una consulenza
 </button>
 
-<!-- Modulo di contatto -->
-<form id="contact-form" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST">
+<!-- Modulo nascosto all'inizio -->
+<form id="contact-form" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST" style="display: none; margin-top: 20px;">
   <input type="hidden" name="_captcha" value="false">
 
   <label for="name">Nome:</label>
@@ -189,7 +189,6 @@ Cordiali saluti,
 
   <button type="submit">Invia richiesta</button>
 </form>
-
 
 
   <h2>Contattami</h2>
