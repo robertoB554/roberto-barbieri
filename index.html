@@ -1,221 +1,184 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Roberto Barbieri - Consulente Tecnico</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Roberto Barbieri</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      line-height: 1.6;
+      background-color: #f1f1f1;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
       color: #333;
     }
+
     header {
-      background-color: #004466;
+      background-color: #004080;
       color: white;
-      padding: 20px 0;
+      padding: 2rem;
       text-align: center;
     }
-    header img {
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border: 3px solid white;
-    }
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #004466;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    form {
-      margin-top: 20px;
-    }
-    input, textarea, button {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: #004466;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #006699;
-    }
-a {
-  color: #006699;
-  text-decoration: none;
-  transition: color 0.3s;
-}
 
-a:hover {
-  color: #0099cc;
-  text-decoration: underline;
-}
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header h2 {
+      margin-top: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: normal;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    #languageSelector {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1 id="title">Roberto Barbieri</h1>
+    <h2 id="subtitle">Consulente tecnico specializzato in sistemi embedded</h2>
+    <select id="languageSelector" onchange="changeLanguage()">
+      <option value="it">Italiano</option>
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+    </select>
+  </header>
 
-  <div class="language-switcher" style="text-align: right; max-width: 900px; margin: 10px auto 0 auto; font-size: 1.5em;">
-    <a href="index.html" title="Italiano">🇮🇹</a>
-    <a href="index-en.html" title="English" style="margin-left: 15px;">🇬🇧</a>
-  </div>
-  
-<header>
-  <img src="https://raw.githubusercontent.com/robertoB554/roberto-barbieri/main/Roberto_Barbieri_554.jpg" alt="Foto di Roberto Barbieri">
-  <h1>Roberto Barbieri</h1>
-  <p>Consulente Senior in Elettronica, Automazione e Innovazione Tecnologica</p>
-</header>
+  <main>
+    <section>
+      <h3 id="aboutTitle">Chi sono</h3>
+      <p id="about">Mi occupo di progettazione elettronica, programmazione firmware e acquisizione dati da sensori.</p>
+    </section>
 
-<div class="container">
-<h2>Chi sono</h2>
-<p>
-  Mi chiamo Roberto Barbieri e ho dedicato oltre 50 anni della mia vita alla tecnica e all’innovazione industriale. 
-  Ho ricoperto ruoli di responsabilità come Direttore Tecnico e progettista in aziende italiane e internazionali, 
-  coordinando team multidisciplinari nello sviluppo di sistemi elettronici, meccatronici, automatismi industriali 
-  e dispositivi embedded ad alte prestazioni. Ho iniziato la mia carriera nei primi anni ’70 in ambito elettrotecnico, 
-  evolvendo rapidamente verso la microelettronica e l’automazione avanzata.
-</p>
-<p>
-  Nel corso degli anni ho guidato progetti complessi, dallo sviluppo di strumenti di misura ad alta precisione fino a 
-  sistemi di controllo per veicoli elettrici (AGV), apparecchiature elettromedicali, bilance industriali e sistemi di test 
-  automatico. Ho maturato una profonda esperienza in progettazione hardware e firmware, nella diagnostica tecnica, 
-  nell’uso di linguaggi di basso livello (Assembly) e alto livello (C/C++), nella progettazione di PCB, 
-  nella trasmissione dati e nell’interfacciamento di sensori.
-</p>
-<p>
-  Sono abituato a lavorare con visione strategica e precisione ingegneristica, affiancando sia startup che realtà consolidate. 
-  Anche ora che sono in pensione, continuo con entusiasmo a offrire consulenze, a progettare e a risolvere problemi complessi. 
-  Amo mettere la mia esperienza al servizio di chi ha bisogno di una guida tecnica affidabile, competente e concreta.
-</p>
+    <section>
+      <h3 id="servicesTitle">Servizi offerti</h3>
+      <ul id="services">
+        <li>Progettazione hardware e PCB</li>
+        <li>Sviluppo firmware per microcontrollori</li>
+        <li>Integrazione sensori analogici e digitali</li>
+        <li>Supporto tecnico remoto</li>
+      </ul>
+    </section>
 
+    <section>
+      <h3 id="contactTitle">Contatti</h3>
+      <p id="contact">Puoi contattarmi via email all’indirizzo: <a href="mailto:roberto@example.com">roberto@example.com</a></p>
+    </section>
+  </main>
 
-<h2>Competenze principali</h2>
-<p>
-  Nel corso della mia carriera ho sviluppato una competenza tecnica completa e trasversale, con particolare specializzazione 
-  nella progettazione hardware e firmware per sistemi embedded. Ho lavorato con architetture ARM, FPGA e microcontrollori, 
-  sviluppando soluzioni su misura per applicazioni industriali e ad alta affidabilità.
-</p>
-<p>
-  Ho progettato e supervisionato sistemi di automazione complessi, inclusi veicoli a guida autonoma (AGV), 
-  impianti elettromedicali, e dispositivi per la trasmissione dati in fibra ottica e su cavo. 
-  Utilizzo strumenti avanzati di progettazione elettronica (Orcad, Autocad, LTSpice) e linguaggi come C, C++ e Assembly.
-</p>
-<p>
-  Sono esperto anche in diagnostica tecnica, interfacciamento sensori, gestione di progetti multidisciplinari, 
-  e risoluzione di problematiche complesse sia in fase di sviluppo che di manutenzione.
-</p>
+  <footer>
+    <p>&copy; 2025 Roberto Barbieri</p>
+  </footer>
 
+  <script>
+    const translations = {
+      it: {
+        title: "Roberto Barbieri",
+        subtitle: "Consulente tecnico specializzato in sistemi embedded",
+        aboutTitle: "Chi sono",
+        about: "Mi occupo di progettazione elettronica, programmazione firmware e acquisizione dati da sensori.",
+        servicesTitle: "Servizi offerti",
+        services: [
+          "Progettazione hardware e PCB",
+          "Sviluppo firmware per microcontrollori",
+          "Integrazione sensori analogici e digitali",
+          "Supporto tecnico remoto"
+        ],
+        contactTitle: "Contatti",
+        contact: 'Puoi contattarmi via email all’indirizzo: <a href="mailto:roberto@example.com">roberto@example.com</a>'
+      },
+      en: {
+        title: "Roberto Barbieri",
+        subtitle: "Technical consultant specialized in embedded systems",
+        aboutTitle: "About me",
+        about: "I work on electronic design, firmware programming and sensor data acquisition.",
+        servicesTitle: "Services",
+        services: [
+          "Hardware and PCB design",
+          "Firmware development for microcontrollers",
+          "Analog and digital sensor integration",
+          "Remote technical support"
+        ],
+        contactTitle: "Contact",
+        contact: 'You can reach me by email at: <a href="mailto:roberto@example.com">roberto@example.com</a>'
+      },
+      fr: {
+        title: "Roberto Barbieri",
+        subtitle: "Consultant technique spécialisé en systèmes embarqués",
+        aboutTitle: "À propos de moi",
+        about: "Je m'occupe de conception électronique, programmation firmware et acquisition de données de capteurs.",
+        servicesTitle: "Services proposés",
+        services: [
+          "Conception de matériel et de circuits imprimés",
+          "Développement de firmware pour microcontrôleurs",
+          "Intégration de capteurs analogiques et numériques",
+          "Support technique à distance"
+        ],
+        contactTitle: "Contact",
+        contact: 'Vous pouvez me contacter par email à : <a href="mailto:roberto@example.com">roberto@example.com</a>'
+      },
+      es: {
+        title: "Roberto Barbieri",
+        subtitle: "Consultor técnico especializado en sistemas embebidos",
+        aboutTitle: "Sobre mí",
+        about: "Me ocupo del diseño electrónico, la programación de firmware y la adquisición de datos de sensores.",
+        servicesTitle: "Servicios ofrecidos",
+        services: [
+          "Diseño de hardware y PCB",
+          "Desarrollo de firmware para microcontroladores",
+          "Integración de sensores analógicos y digitales",
+          "Soporte técnico remoto"
+        ],
+        contactTitle: "Contacto",
+        contact: 'Puedes contactarme por correo electrónico a: <a href="mailto:roberto@example.com">roberto@example.com</a>'
+      }
+    };
 
-<h2>Progetti realizzati</h2>
-<p>
-  Ho guidato e sviluppato una vasta gamma di progetti tecnici, tra cui:
-</p>
-<ul>
-  <li>Sistemi di misura elettronica ad alta precisione per laboratori e ambienti industriali</li>
-  <li>Blackbox intelligenti per veicoli elettrici industriali e civili, con monitoraggio in tempo reale</li>
-  <li>Sistemi di test automatizzati per linee di produzione ad alta efficienza</li>
-  <li>Apparecchiature elettromedicali con capacità di elaborazione locale embedded</li>
-  <li>Azionamenti e controllori per motori elettrici di diverse tipologie e potenze</li>
-  <li>Scambiatori di calore a celle di Peltier per applicazioni di precisione</li>
-</ul>
-<p>
-  Ogni progetto è stato affrontato con una metodologia orientata alla qualità, all’ottimizzazione dei costi e alla massima affidabilità nel tempo.
-</p>
+    function changeLanguage() {
+      const lang = document.getElementById("languageSelector").value;
+      const t = translations[lang];
 
-<h2>Perché scegliere me</h2>
-<p>
-  La mia esperienza non è solo lunga, ma anche profonda e concreta: oltre 50 anni di attività tecnica mi hanno permesso di affrontare
-  ogni tipo di sfida nei settori dell’elettronica, automazione e progettazione industriale. Ho lavorato su impianti reali, con
-  responsabilità dirette e risultati misurabili.
-</p>
-<p>
-  A differenza di molte consulenze teoriche, io offro soluzioni pratiche, funzionali e collaudate. Lavoro con precisione,
-  rispetto delle tempistiche, e massima cura del dettaglio, mettendo sempre al centro le esigenze del cliente.
-</p>
-<p>
-  Se cerchi una figura esperta, autonoma, e in grado di dare valore aggiunto immediato ai tuoi progetti tecnici, 
-  sei nel posto giusto.
-</p>
-  
-<!-- Pulsante per mostrare il modulo -->
-<button type="button" onclick="document.getElementById('contact-form').style.display='block'; document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
-  📅 Prenota una consulenza
-</button>
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("subtitle").innerText = t.subtitle;
+      document.getElementById("aboutTitle").innerText = t.aboutTitle;
+      document.getElementById("about").innerText = t.about;
+      document.getElementById("servicesTitle").innerText = t.servicesTitle;
 
-<!-- Modulo nascosto all'inizio -->
-<form id="contact-form" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST" style="display: none; margin-top: 20px;">
-  <input type="hidden" name="_captcha" value="false">
+      const servicesList = document.getElementById("services");
+      servicesList.innerHTML = "";
+      t.services.forEach(service => {
+        const li = document.createElement("li");
+        li.textContent = service;
+        servicesList.appendChild(li);
+      });
 
-  <label for="name">Nome:</label>
-  <input type="text" id="name" name="name" required>
-
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-
-  <label for="message">Messaggio:</label>
-  <textarea id="message" name="message" rows="7" required>
-Buongiorno Roberto,
-
-vorrei prenotare una consulenza tecnica. Ecco i dati della mia richiesta:
-
-- Tipo di consulenza: [inserire settore es. elettronica, automazione, firmware...]
-- Durata stimata: [es. 1h, 2h]
-- Giorno/orario preferito: [es. 12 giugno, ore 15]
-- Modalità: [videocall, telefono, email]
-
-Grazie e attendo un suo cortese riscontro.
-
-Cordiali saluti,
-[Nome e Cognome]
-  </textarea>
-
-  <button type="submit">Invia richiesta</button>
-</form>
-
-
-  <h2>Contattami</h2>
-  <form action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST">
-    <input type="hidden" name="_captcha" value="false">
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="message">Messaggio:</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
-
-    <button type="submit">Invia</button>
-  </form>
-
-  <p style="margin-top: 30px;">
-
-    📧 Email: <a href="mailto:roberto.barbieri554@gmail.com" title="Invia una email a Roberto Barbieri">roberto.barbieri554@gmail.com</a><br>
-    
-
-🔗 LinkedIn: <a href="https://www.linkedin.com/in/roberto-barbieri554" target="_blank" title="Visita il mio profilo LinkedIn">roberto-barbieri554</a>
-
-    
-  </p>
-</div>
-
+      document.getElementById("contactTitle").innerText = t.contactTitle;
+      document.getElementById("contact").innerHTML = t.contact;
+    }
+  </script>
 </body>
 </html>
+
