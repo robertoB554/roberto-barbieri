@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roberto Barbieri - Multilingua Completa</title>
+</head>
+<body>
+  <div style="text-align:right; padding:10px;">
+    <select id="languageSelector" onchange="changeLanguage()">
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="es">🇪🇸 Español</option>
+    </select>
+  </div>
+  <div id="content" style="padding: 1em; font-family: Arial, sans-serif;"></div>
+  <script>
+    const translations = {
+      it: `<h1>Roberto Barbieri</h1><p>Mi chiamo Roberto Barbieri e ho dedicato oltre 50 anni alla tecnica...</p>`,
+      en: `<h1>Roberto Barbieri</h1><p>My name is Roberto Barbieri and I have dedicated over 50 years to technology...</p>`,
+      fr: `<h1>Roberto Barbieri</h1><p>Je m'appelle Roberto Barbieri et j'ai consacré plus de 50 ans à l'innovation technique...</p>`,
+      es: `<h1>Roberto Barbieri</h1><p>Me llamo Roberto Barbieri y he dedicado más de 50 años a la innovación técnica...</p>`
+    };
+    function changeLanguage(lang = null) {
+      const selectedLang = lang || document.getElementById("languageSelector").value;
+      document.getElementById("content").innerHTML = translations[selectedLang] || translations["en"];
+      document.documentElement.lang = selectedLang;
+    }
+    (function autoDetectLanguage() {
+      const userLang = navigator.language || navigator.userLanguage;
+      const shortLang = userLang.split('-')[0];
+      changeLanguage(['it', 'en', 'fr', 'es'].includes(shortLang) ? shortLang : 'en');
+    })();
+  </script>
+</body>
+</html>
