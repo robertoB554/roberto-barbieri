@@ -59,119 +59,194 @@
     button:hover {
       background-color: #006699;
     }
-a {
-  color: #006699;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: #0099cc;
-  text-decoration: underline;
-}
+    a {
+      color: #006699;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #0099cc;
+      text-decoration: underline;
+    }
+    /* Stili per il selettore lingua */
+    .language-selector {
+      text-align: right;
+      max-width: 900px;
+      margin: 10px auto 0 auto;
+      padding-right: 15px; /* Aggiunto per un po' di spazio dal bordo */
+    }
+    .language-selector select {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      cursor: pointer;
+      background-color: white;
+      color: #333;
+    }
+    /* Nascondi tutti i contenuti delle lingue tranne quella attiva */
+    .lang-content {
+        display: none;
+    }
+    .lang-content.active {
+        display: block;
+    }
   </style>
 </head>
 <body>
 
-  <div class="language-switcher" style="text-align: right; max-width: 900px; margin: 10px auto 0 auto; font-size: 1.5em;">
-    <a href="index.html" title="Italiano">🇮🇹</a>
-    <a href="index-en.html" title="English" style="margin-left: 15px;">🇬🇧</a>
+  <div class="language-selector">
+    <select id="language-switcher">
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="es">🇪🇸 Español</option>
+    </select>
   </div>
-  
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langSwitcher = document.getElementById('language-switcher');
+
+        // Funzione per impostare la lingua
+        function setLanguage(lang) {
+            // Nascondi tutti i contenuti delle lingue
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Mostra il contenuto della lingua selezionata
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.add('active');
+            });
+            // Aggiorna l'attributo lang dell'html
+            document.documentElement.lang = lang;
+            // Salva la lingua preferita nel localStorage
+            localStorage.setItem('preferredLanguage', lang);
+            // Aggiorna il selettore
+            langSwitcher.value = lang;
+        }
+
+        // Rileva la lingua preferita dal browser o dal localStorage
+        let userLang = localStorage.getItem('preferredLanguage') || navigator.language.split('-')[0];
+
+        // Se la lingua del browser non è tra quelle supportate, usa l'italiano come default
+        const supportedLangs = ['it', 'en', 'fr', 'es'];
+        if (!supportedLangs.includes(userLang)) {
+            userLang = 'it';
+        }
+
+        // Imposta la lingua iniziale
+        setLanguage(userLang);
+
+        // Aggiungi event listener per il cambio lingua manuale
+        langSwitcher.addEventListener('change', function() {
+            setLanguage(this.value);
+        });
+    });
+  </script>
+
 <header>
   <img src="https://raw.githubusercontent.com/robertoB554/roberto-barbieri/main/Roberto_Barbieri_554.jpg" alt="Foto di Roberto Barbieri">
-  <h1>Roberto Barbieri</h1>
-  <p>Consulente Senior in Elettronica, Automazione e Innovazione Tecnologica</p>
+  <h1 class="lang-content active lang-it">Roberto Barbieri</h1>
+  <h1 class="lang-content lang-en">Roberto Barbieri</h1>
+  <h1 class="lang-content lang-fr">Roberto Barbieri</h1>
+  <h1 class="lang-content lang-es">Roberto Barbieri</h1>
+
+  <p class="lang-content active lang-it">Consulente Senior in Elettronica, Automazione e Innovazione Tecnologica</p>
+  <p class="lang-content lang-en">Senior Consultant in Electronics, Automation, and Technological Innovation</p>
+  <p class="lang-content lang-fr">Consultant Senior en Électronique, Automatisation et Innovation Technologique</p>
+  <p class="lang-content lang-es">Consultor Senior en Electrónica, Automatización e Innovación Tecnológica</p>
 </header>
 
 <div class="container">
-<h2>Chi sono</h2>
-<p>
-  Mi chiamo Roberto Barbieri e ho dedicato oltre 50 anni della mia vita alla tecnica e all’innovazione industriale. 
-  Ho ricoperto ruoli di responsabilità come Direttore Tecnico e progettista in aziende italiane e internazionali, 
-  coordinando team multidisciplinari nello sviluppo di sistemi elettronici, meccatronici, automatismi industriali 
-  e dispositivi embedded ad alte prestazioni. Ho iniziato la mia carriera nei primi anni ’70 in ambito elettrotecnico, 
-  evolvendo rapidamente verso la microelettronica e l’automazione avanzata.
-</p>
-<p>
-  Nel corso degli anni ho guidato progetti complessi, dallo sviluppo di strumenti di misura ad alta precisione fino a 
-  sistemi di controllo per veicoli elettrici (AGV), apparecchiature elettromedicali, bilance industriali e sistemi di test 
-  automatico. Ho maturato una profonda esperienza in progettazione hardware e firmware, nella diagnostica tecnica, 
-  nell’uso di linguaggi di basso livello (Assembly) e alto livello (C/C++), nella progettazione di PCB, 
-  nella trasmissione dati e nell’interfacciamento di sensori.
-</p>
-<p>
-  Sono abituato a lavorare con visione strategica e precisione ingegneristica, affiancando sia startup che realtà consolidate. 
-  Anche ora che sono in pensione, continuo con entusiasmo a offrire consulenze, a progettare e a risolvere problemi complessi. 
-  Amo mettere la mia esperienza al servizio di chi ha bisogno di una guida tecnica affidabile, competente e concreta.
-</p>
+
+<div class="lang-content active lang-it">
+    <h2>Chi sono</h2>
+    <p>
+      Mi chiamo Roberto Barbieri e ho dedicato oltre 50 anni della mia vita alla tecnica e all’innovazione industriale.
+      Ho ricoperto ruoli di responsabilità come Direttore Tecnico e progettista in aziende italiane e internazionali,
+      coordinando team multidisciplinari nello sviluppo di sistemi elettronici, meccatronici, automatismi industriali
+      e dispositivi embedded ad alte prestazioni. Ho iniziato la mia carriera nei primi anni ’70 in ambito elettrotecnico,
+      evolvendo rapidamente verso la microelettronica e l’automazione avanzata.
+    </p>
+    <p>
+      Nel corso degli anni ho guidato progetti complessi, dallo sviluppo di strumenti di misura ad alta precisione fino a
+      sistemi di controllo per veicoli elettrici (AGV), apparecchiature elettromedicali, bilance industriali e sistemi di test
+      automatico. Ho maturato una profonda esperienza in progettazione hardware e firmware, nella diagnostica tecnica,
+      nell’uso di linguaggi di basso livello (Assembly) e alto livello (C/C++), nella progettazione di PCB,
+      nella trasmissione dati e nell’interfacciamento di sensori.
+    </p>
+    <p>
+      Sono abituato a lavorare con visione strategica e precisione ingegneristica, affiancando sia startup che realtà consolidate.
+      Anche ora che sono in pensione, continuo con entusiasmo a offrire consulenze, a progettare e a risolvere problemi complessi.
+      Amo mettere la mia esperienza al servizio di chi ha bisogno di una guida tecnica affidabile, competente e concreta.
+    </p>
 
 
-<h2>Competenze principali</h2>
-<p>
-  Nel corso della mia carriera ho sviluppato una competenza tecnica completa e trasversale, con particolare specializzazione 
-  nella progettazione hardware e firmware per sistemi embedded. Ho lavorato con architetture ARM, FPGA e microcontrollori, 
-  sviluppando soluzioni su misura per applicazioni industriali e ad alta affidabilità.
-</p>
-<p>
-  Ho progettato e supervisionato sistemi di automazione complessi, inclusi veicoli a guida autonoma (AGV), 
-  impianti elettromedicali, e dispositivi per la trasmissione dati in fibra ottica e su cavo. 
-  Utilizzo strumenti avanzati di progettazione elettronica (Orcad, Autocad, LTSpice) e linguaggi come C, C++ e Assembly.
-</p>
-<p>
-  Sono esperto anche in diagnostica tecnica, interfacciamento sensori, gestione di progetti multidisciplinari, 
-  e risoluzione di problematiche complesse sia in fase di sviluppo che di manutenzione.
-</p>
+    <h2>Competenze principali</h2>
+    <p>
+      Nel corso della mia carriera ho sviluppato una competenza tecnica completa e trasversale, con particolare specializzazione
+      nella progettazione hardware e firmware per sistemi embedded. Ho lavorato con architetture ARM, FPGA e microcontrollori,
+      sviluppando soluzioni su misura per applicazioni industriali e ad alta affidabilità.
+    </p>
+    <p>
+      Ho progettato e supervisionato sistemi di automazione complessi, inclusi veicoli a guida autonoma (AGV),
+      impianti elettromedicali, e dispositivi per la trasmissione dati in fibra ottica e su cavo.
+      Utilizzo strumenti avanzati di progettazione elettronica (Orcad, Autocad, LTSpice) e linguaggi come C, C++ e Assembly.
+    </p>
+    <p>
+      Sono esperto anche in diagnostica tecnica, interfacciamento sensori, gestione di progetti multidisciplinari,
+      e risoluzione di problematiche complesse sia in fase di sviluppo che di manutenzione.
+    </p>
 
 
-<h2>Progetti realizzati</h2>
-<p>
-  Ho guidato e sviluppato una vasta gamma di progetti tecnici, tra cui:
-</p>
-<ul>
-  <li>Sistemi di misura elettronica ad alta precisione per laboratori e ambienti industriali</li>
-  <li>Blackbox intelligenti per veicoli elettrici industriali e civili, con monitoraggio in tempo reale</li>
-  <li>Sistemi di test automatizzati per linee di produzione ad alta efficienza</li>
-  <li>Apparecchiature elettromedicali con capacità di elaborazione locale embedded</li>
-  <li>Azionamenti e controllori per motori elettrici di diverse tipologie e potenze</li>
-  <li>Scambiatori di calore a celle di Peltier per applicazioni di precisione</li>
-</ul>
-<p>
-  Ogni progetto è stato affrontato con una metodologia orientata alla qualità, all’ottimizzazione dei costi e alla massima affidabilità nel tempo.
-</p>
+    <h2>Progetti realizzati</h2>
+    <p>
+      Ho guidato e sviluppato una vasta gamma di progetti tecnici, tra cui:
+    </p>
+    <ul>
+      <li>Sistemi di misura elettronica ad alta precisione per laboratori e ambienti industriali</li>
+      <li>Blackbox intelligenti per veicoli elettrici industriali e civili, con monitoraggio in tempo reale</li>
+      <li>Sistemi di test automatizzati per linee di produzione ad alta efficienza</li>
+      <li>Apparecchiature elettromedicali con capacità di elaborazione locale embedded</li>
+      <li>Azionamenti e controllori per motori elettrici di diverse tipologie e potenze</li>
+      <li>Scambiatori di calore a celle di Peltier per applicazioni di precisione</li>
+    </ul>
+    <p>
+      Ogni progetto è stato affrontato con una metodologia orientata alla qualità, all’ottimizzazione dei costi e alla massima affidabilità nel tempo.
+    </p>
 
-<h2>Perché scegliere me</h2>
-<p>
-  La mia esperienza non è solo lunga, ma anche profonda e concreta: oltre 50 anni di attività tecnica mi hanno permesso di affrontare
-  ogni tipo di sfida nei settori dell’elettronica, automazione e progettazione industriale. Ho lavorato su impianti reali, con
-  responsabilità dirette e risultati misurabili.
-</p>
-<p>
-  A differenza di molte consulenze teoriche, io offro soluzioni pratiche, funzionali e collaudate. Lavoro con precisione,
-  rispetto delle tempistiche, e massima cura del dettaglio, mettendo sempre al centro le esigenze del cliente.
-</p>
-<p>
-  Se cerchi una figura esperta, autonoma, e in grado di dare valore aggiunto immediato ai tuoi progetti tecnici, 
-  sei nel posto giusto.
-</p>
-  
-<!-- Pulsante per mostrare il modulo -->
-<button type="button" onclick="document.getElementById('contact-form').style.display='block'; document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
-  📅 Prenota una consulenza
-</button>
+    <h2>Perché scegliere me</h2>
+    <p>
+      La mia esperienza non è solo lunga, ma anche profonda e concreta: oltre 50 anni di attività tecnica mi hanno permesso di affrontare
+      ogni tipo di sfida nei settori dell’elettronica, automazione e progettazione industriale. Ho lavorato su impianti reali, con
+      responsabilità dirette e risultati misurabili.
+    </p>
+    <p>
+      A differenza di molte consulenze teoriche, io offro soluzioni pratiche, funzionali e collaudate. Lavoro con precisione,
+      rispetto delle tempistiche, e massima cura del dettaglio, mettendo sempre al centro le esigenze del cliente.
+    </p>
+    <p>
+      Se cerchi una figura esperta, autonoma, e in grado di dare valore aggiunto immediato ai tuoi progetti tecnici,
+      sei nel posto giusto.
+    </p>
 
-<!-- Modulo nascosto all'inizio -->
-<form id="contact-form" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST" style="display: none; margin-top: 20px;">
-  <input type="hidden" name="_captcha" value="false">
+    <button type="button" onclick="document.getElementById('contact-form-it').style.display='block'; document.getElementById('contact-form-it').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
+      📅 Prenota una consulenza
+    </button>
 
-  <label for="name">Nome:</label>
-  <input type="text" id="name" name="name" required>
+    <form id="contact-form-it" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST" style="display: none; margin-top: 20px;">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Nuova Richiesta di Consulenza (IT)">
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
+      <label for="name-it">Nome:</label>
+      <input type="text" id="name-it" name="name" required>
 
-  <label for="message">Messaggio:</label>
-  <textarea id="message" name="message" rows="7" required>
+      <label for="email-it">Email:</label>
+      <input type="email" id="email-it" name="email" required>
+
+      <label for="message-it">Messaggio:</label>
+      <textarea id="message-it" name="message" rows="7" required>
 Buongiorno Roberto,
 
 vorrei prenotare una consulenza tecnica. Ecco i dati della mia richiesta:
@@ -185,38 +260,346 @@ Grazie e attendo un suo cortese riscontro.
 
 Cordiali saluti,
 [Nome e Cognome]
-  </textarea>
+      </textarea>
 
-  <button type="submit">Invia richiesta</button>
-</form>
+      <button type="submit">Invia richiesta</button>
+    </form>
 
 
-  <h2>Contattami</h2>
-  <form action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST">
-    <input type="hidden" name="_captcha" value="false">
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" required>
+    <h2>Contattami</h2>
+    <p style="margin-top: 30px;">
+      📧 Email: <a href="mailto:roberto.barbieri554@gmail.com" title="Invia una email a Roberto Barbieri">roberto.barbieri554@gmail.com</a><br>
+      🔗 LinkedIn: <a href="https://www.linkedin.com/in/roberto-barbieri554" target="_blank" title="Visita il mio profilo LinkedIn">roberto-barbieri554</a>
+    </p>
+</div>
+<div class="lang-content lang-en">
+    <h2>About Me</h2>
+    <p>
+      My name is Roberto Barbieri, and I have dedicated over 50 years of my life to technology and industrial innovation.
+      I have held leadership roles as Technical Director and designer in Italian and international companies,
+      coordinating multidisciplinary teams in the development of electronic, mechatronic, industrial automation systems,
+      and high-performance embedded devices. I began my career in the early 1970s in the electrotechnical field,
+      rapidly evolving towards microelectronics and advanced automation.
+    </p>
+    <p>
+      Over the years, I have led complex projects, from the development of high-precision measuring instruments to
+      control systems for electric vehicles (AGVs), electromedical equipment, industrial scales, and automatic test systems.
+      I have gained deep experience in hardware and firmware design, technical diagnostics,
+      the use of low-level (Assembly) and high-level (C/C++) languages, PCB design,
+      data transmission, and sensor interfacing.
+    </p>
+    <p>
+      I am accustomed to working with a strategic vision and engineering precision, assisting both startups and established companies.
+      Even though I am retired, I continue with enthusiasm to offer consultations, design, and solve complex problems.
+      I love putting my experience at the service of those who need reliable, competent, and practical technical guidance.
+    </p>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <h2>Key Competencies</h2>
+    <p>
+      Throughout my career, I have developed a comprehensive and transversal technical expertise, with particular specialization
+      in hardware and firmware design for embedded systems. I have worked with ARM, FPGA, and microcontroller architectures,
+      developing tailor-made solutions for industrial and high-reliability applications.
+    </p>
+    <p>
+      I have designed and supervised complex automation systems, including autonomous guided vehicles (AGVs),
+      electromedical facilities, and devices for data transmission via fiber optic and cable.
+      I use advanced electronic design tools (Orcad, Autocad, LTSpice) and languages such as C, C++, and Assembly.
+    </p>
+    <p>
+      I am also experienced in technical diagnostics, sensor interfacing, managing multidisciplinary projects,
+      and resolving complex issues in both development and maintenance phases.
+    </p>
 
-    <label for="message">Messaggio:</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
+    <h2>Projects Completed</h2>
+    <p>
+      I have led and developed a wide range of technical projects, including:
+    </p>
+    <ul>
+      <li>High-precision electronic measurement systems for laboratories and industrial environments</li>
+      <li>Intelligent black boxes for industrial and civil electric vehicles, with real-time monitoring</li>
+      <li>Automated test systems for high-efficiency production lines</li>
+      <li>Electromedical equipment with embedded local processing capabilities</li>
+      <li>Drives and controllers for electric motors of various types and powers</li>
+      <li>Peltier cell heat exchangers for precision applications</li>
+    </ul>
+    <p>
+      Each project was approached with a methodology focused on quality, cost optimization, and maximum long-term reliability.
+    </p>
 
-    <button type="submit">Invia</button>
-  </form>
+    <h2>Why Choose Me</h2>
+    <p>
+      My experience is not only extensive but also deep and practical: over 50 years of technical activity have allowed me to face
+      every kind of challenge in the fields of electronics, automation, and industrial design. I have worked on real systems, with
+      direct responsibilities and measurable results.
+    </p>
+    <p>
+      Unlike many theoretical consultancies, I offer practical, functional, and proven solutions. I work with precision,
+      respect for deadlines, and utmost attention to detail, always prioritizing the client's needs.
+    </p>
+    <p>
+      If you are looking for an experienced, autonomous professional capable of providing immediate added value to your technical projects,
+      you are in the right place.
+    </p>
 
-  <p style="margin-top: 30px;">
+    <button type="button" onclick="document.getElementById('contact-form-en').style.display='block'; document.getElementById('contact-form-en').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
+      📅 Book a Consultation
+    </button>
 
-    📧 Email: <a href="mailto:roberto.barbieri554@gmail.com" title="Invia una email a Roberto Barbieri">roberto.barbieri554@gmail.com</a><br>
-    
+    <form id="contact-form-en" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST" style="display: none; margin-top: 20px;">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New Consultation Request (EN)">
 
-🔗 LinkedIn: <a href="https://www.linkedin.com/in/roberto-barbieri554" target="_blank" title="Visita il mio profilo LinkedIn">roberto-barbieri554</a>
+      <label for="name-en">Name:</label>
+      <input type="text" id="name-en" name="name" required>
 
-    
-  </p>
+      <label for="email-en">Email:</label>
+      <input type="email" id="email-en" name="email" required>
+
+      <label for="message-en">Message:</label>
+      <textarea id="message-en" name="message" rows="7" required>
+Dear Roberto,
+
+I would like to book a technical consultation. Here are the details of my request:
+
+- Type of consultation: [e.g., electronics, automation, firmware...]
+- Estimated duration: [e.g., 1h, 2h]
+- Preferred day/time: [e.g., June 12, 3 PM]
+- Modality: [videocall, phone, email]
+
+Thank you, and I look forward to your kind reply.
+
+Best regards,
+[Name and Surname]
+      </textarea>
+
+      <button type="submit">Send Request</button>
+    </form>
+
+    <h2>Contact Me</h2>
+    <p style="margin-top: 30px;">
+      📧 Email: <a href="mailto:roberto.barbieri554@gmail.com" title="Send an email to Roberto Barbieri">roberto.barbieri554@gmail.com</a><br>
+      🔗 LinkedIn: <a href="https://www.linkedin.com/in/roberto-barbieri554" target="_blank" title="Visit my LinkedIn profile">roberto-barbieri554</a>
+    </p>
+</div>
+<div class="lang-content lang-fr">
+    <h2>À propos de moi</h2>
+    <p>
+      Je m'appelle Roberto Barbieri et j'ai dédié plus de 50 ans de ma vie à la technique et à l'innovation industrielle.
+      J'ai occupé des postes à responsabilités en tant que Directeur Technique et concepteur dans des entreprises italiennes et internationales,
+      coordonnant des équipes multidisciplinaires dans le développement de systèmes électroniques, mécatroniques, automatismes industriels
+      et dispositifs embarqués de haute performance. J'ai commencé ma carrière au début des années 1970 dans le domaine électrotechnique,
+      évoluant rapidement vers la microélectronique et l'automatisation avancée.
+    </p>
+    <p>
+      Au fil des ans, j'ai dirigé des projets complexes, du développement d'instruments de mesure de haute précision aux
+      systèmes de contrôle pour véhicules électriques (AGV), équipements électromédicaux, balances industrielles et systèmes de test
+      automatisés. J'ai acquis une profonde expérience en conception hardware et firmware, en diagnostic technique,
+      dans l'utilisation de langages de bas niveau (Assembleur) et de haut niveau (C/C++), en conception de PCB,
+      en transmission de données et en interfaçage de capteurs.
+    </p>
+    <p>
+      J'ai l'habitude de travailler avec une vision stratégique et une précision d'ingénierie, en accompagnant aussi bien des startups que des entreprises établies.
+      Même maintenant que je suis à la retraite, je continue avec enthousiasme à offrir des consultations, à concevoir et à résoudre des problèmes complexes.
+      J'aime mettre mon expérience au service de ceux qui ont besoin d'un guide technique fiable, compétent et concret.
+    </p>
+
+    <h2>Compétences principales</h2>
+    <p>
+      Au cours de ma carrière, j'ai développé une compétence technique complète et transversale, avec une spécialisation particulière
+      dans la conception hardware et firmware pour systèmes embarqués. J'ai travaillé avec des architectures ARM, FPGA et microcontrôleurs,
+      développant des solutions sur mesure pour des applications industrielles et de haute fiabilité.
+    </p>
+    <p>
+      J'ai conçu et supervisé des systèmes d'automatisation complexes, y compris des véhicules à guidage automatique (AGV),
+      des installations électromédicales et des dispositifs de transmission de données par fibre optique et par câble.
+      J'utilise des outils avancés de conception électronique (Orcad, Autocad, LTSpice) et des langages comme C, C++ et Assembleur.
+    </p>
+    <p>
+      Je suis également expert en diagnostic technique, en interfaçage de capteurs, en gestion de projets multidisciplinaires,
+      et en résolution de problématiques complexes tant en phase de développement que de maintenance.
+    </p>
+
+    <h2>Projets réalisés</h2>
+    <p>
+      J'ai dirigé et développé une vaste gamme de projets techniques, y compris:
+    </p>
+    <ul>
+      <li>Systèmes de mesure électronique de haute précision pour laboratoires et environnements industriels</li>
+      <li>Boîtes noires intelligentes pour véhicules électriques industriels et civils, avec surveillance en temps réel</li>
+      <li>Systèmes de test automatisés pour lignes de production à haute efficacité</li>
+      <li>Équipements électromédicaux avec capacités de traitement local embarquées</li>
+      <li>Variateurs et contrôleurs pour moteurs électriques de différents types et puissances</li>
+      <li>Échangeurs de chaleur à cellules Peltier pour applications de précision</li>
+    </ul>
+    <p>
+      Chaque projet a été abordé avec une méthodologie axée sur la qualité, l'optimisation des coûts et la fiabilité maximale à long terme.
+    </p>
+
+    <h2>Pourquoi me choisir</h2>
+    <p>
+      Mon expérience n'est pas seulement longue, mais aussi profonde et concrète : plus de 50 ans d'activité technique m'ont permis d'affronter
+      tout type de défi dans les secteurs de l'électronique, de l'automatisation et de la conception industrielle. J'ai travaillé sur des systèmes réels, avec
+      des responsabilités directes et des résultats mesurables.
+    </p>
+    <p>
+      Contrairement à de nombreuses consultations théoriques, j'offre des solutions pratiques, fonctionnelles et éprouvées. Je travaille avec précision,
+      respect des délais et le plus grand souci du détail, en plaçant toujours les besoins du client au centre.
+    </p>
+    <p>
+      Si vous recherchez une figure expérimentée, autonome et capable d'apporter une valeur ajoutée immédiate à vos projets techniques,
+      vous êtes au bon endroit.
+    </p>
+
+    <button type="button" onclick="document.getElementById('contact-form-fr').style.display='block'; document.getElementById('contact-form-fr').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
+      📅 Réserver une consultation
+    </button>
+
+    <form id="contact-form-fr" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST" style="display: none; margin-top: 20px;">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Nouvelle Demande de Consultation (FR)">
+
+      <label for="name-fr">Nom:</label>
+      <input type="text" id="name-fr" name="name" required>
+
+      <label for="email-fr">E-mail:</label>
+      <input type="email" id="email-fr" name="email" required>
+
+      <label for="message-fr">Message:</label>
+      <textarea id="message-fr" name="message" rows="7" required>
+Bonjour Roberto,
+
+Je souhaiterais réserver une consultation technique. Voici les détails de ma demande :
+
+- Type de consultation : [par exemple, électronique, automatisation, firmware...]
+- Durée estimée : [par exemple, 1h, 2h]
+- Jour/heure préféré : [par exemple, 12 juin, 15h]
+- Modalité : [appel vidéo, téléphone, e-mail]
+
+Merci, et j'attends votre aimable réponse.
+
+Cordialement,
+[Nom et Prénom]
+      </textarea>
+
+      <button type="submit">Envoyer la demande</button>
+    </form>
+
+    <h2>Me contacter</h2>
+    <p style="margin-top: 30px;">
+      📧 E-mail : <a href="mailto:roberto.barbieri554@gmail.com" title="Envoyer un e-mail à Roberto Barbieri">roberto.barbieri554@gmail.com</a><br>
+      🔗 LinkedIn : <a href="https://www.linkedin.com/in/roberto-barbieri554" target="_blank" title="Visiter mon profil LinkedIn">roberto-barbieri554</a>
+    </p>
+</div>
+<div class="lang-content lang-es">
+    <h2>Sobre mí</h2>
+    <p>
+      Mi nombre es Roberto Barbieri y he dedicado más de 50 años de mi vida a la técnica y la innovación industrial.
+      He ocupado roles de responsabilidad como Director Técnico y diseñador en empresas italianas e internacionales,
+      coordinando equipos multidisciplinares en el desarrollo de sistemas electrónicos, mecatrónicos, automatismos industriales
+      y dispositivos embebidos de alto rendimiento. Comencé mi carrera a principios de los años 70 en el ámbito de la electrotecnia,
+      evolucionando rápidamente hacia la microelectrónica y la automatización avanzada.
+    </p>
+    <p>
+      A lo largo de los años he liderado proyectos complejos, desde el desarrollo de instrumentos de medida de alta precisión hasta
+      sistemas de control para vehículos eléctricos (AGV), equipos electromédicos, básculas industriales y sistemas de prueba
+      automática. He adquirido una profunda experiencia en diseño de hardware y firmware, en diagnóstico técnico,
+      en el uso de lenguajes de bajo nivel (Assembly) y alto nivel (C/C++), en diseño de PCB,
+      en transmisión de datos y en la interfaz de sensores.
+    </p>
+    <p>
+      Estoy acostumbrado a trabajar con visión estratégica y precisión ingenieril, apoyando tanto a startups como a empresas consolidadas.
+      Aunque ya estoy jubilado, sigo con entusiasmo ofreciendo consultorías, diseñando y resolviendo problemas complejos.
+      Me encanta poner mi experiencia al servicio de quienes necesitan una guía técnica fiable, competente y concreta.
+    </p>
+
+    <h2>Competencias principales</h2>
+    <p>
+      A lo largo de mi carrera he desarrollado una competencia técnica completa y transversal, con particular especialización
+      en el diseño de hardware y firmware para sistemas embebidos. He trabajado con arquitecturas ARM, FPGA y microcontroladores,
+      desarrollando soluciones a medida para aplicaciones industriales y de alta fiabilidad.
+    </p>
+    <p>
+      He diseñado y supervisado sistemas de automatización complejos, incluidos vehículos de guiado automático (AGV),
+      instalaciones electromédicas y dispositivos para la transmisión de datos por fibra óptica y por cable.
+      Utilizo herramientas avanzadas de diseño electrónico (Orcad, Autocad, LTSpice) y lenguajes como C, C++ y Assembly.
+    </p>
+    <p>
+      También soy experto en diagnóstico técnico, interfaz de sensores, gestión de proyectos multidisciplinares,
+      y resolución de problemas complejos tanto en la fase de desarrollo como de mantenimiento.
+    </p>
+
+    <h2>Proyectos realizados</h2>
+    <p>
+      He liderado y desarrollado una amplia gama de proyectos técnicos, incluyendo:
+    </p>
+    <ul>
+      <li>Sistemas de medición electrónica de alta precisión para laboratorios y entornos industriales</li>
+      <li>Cajas negras inteligentes para vehículos eléctricos industriales y civiles, con monitorización en tiempo real</li>
+      <li>Sistemas de prueba automatizados para líneas de producción de alta eficiencia</li>
+      <li>Equipos electromédicos con capacidades de procesamiento local embebidas</li>
+      <li>Accionamientos y controladores para motores eléctricos de diferentes tipos y potencias</li>
+      <li>Intercambiadores de calor de celdas Peltier para aplicaciones de precisión</li>
+    </ul>
+    <p>
+      Cada proyecto ha sido abordado con una metodología orientada a la calidad, la optimización de costes y la máxima fiabilidad a lo largo del tiempo.
+    </p>
+
+    <h2>Por qué elegirme</h2>
+    <p>
+      Mi experiencia no es solo larga, sino también profunda y concreta: más de 50 años de actividad técnica me han permitido afrontar
+      todo tipo de desafíos en los sectores de la electrónica, automatización y diseño industrial. He trabajado en sistemas reales, con
+      responsabilidades directas y resultados medibles.
+    </p>
+    <p>
+      A diferencia de muchas consultorías teóricas, yo ofrezco soluciones prácticas, funcionales y probadas. Trabajo con precisión,
+      respeto de los plazos y el máximo cuidado del detalle, siempre poniendo las necesidades del cliente en el centro.
+    </p>
+    <p>
+      Si buscas una figura experta, autónoma y capaz de aportar un valor añadido inmediato a tus proyectos técnicos,
+      estás en el lugar adecuado.
+    </p>
+
+    <button type="button" onclick="document.getElementById('contact-form-es').style.display='block'; document.getElementById('contact-form-es').scrollIntoView({ behavior: 'smooth' });" style="margin-bottom: 20px;">
+      📅 Reservar una consulta
+    </button>
+
+    <form id="contact-form-es" action="https://formsubmit.co/roberto.barbieri554@gmail.com" method="POST" style="display: none; margin-top: 20px;">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Nueva Solicitud de Consulta (ES)">
+
+      <label for="name-es">Nombre:</label>
+      <input type="text" id="name-es" name="name" required>
+
+      <label for="email-es">Email:</label>
+      <input type="email" id="email-es" name="email" required>
+
+      <label for="message-es">Mensaje:</label>
+      <textarea id="message-es" name="message" rows="7" required>
+Estimado Roberto,
+
+Me gustaría reservar una consulta técnica. Aquí están los detalles de mi solicitud:
+
+- Tipo de consulta: [por ejemplo, electrónica, automatización, firmware...]
+- Duración estimada: [por ejemplo, 1h, 2h]
+- Día/hora preferido: [por ejemplo, 12 de junio, 3 PM]
+- Modalidad: [videollamada, teléfono, correo electrónico]
+
+Gracias, y espero su amable respuesta.
+
+Atentamente,
+[Nombre y Apellido]
+      </textarea>
+
+      <button type="submit">Enviar Solicitud</button>
+    </form>
+
+    <h2>Contáctame</h2>
+    <p style="margin-top: 30px;">
+      📧 Email: <a href="mailto:roberto.barbieri554@gmail.com" title="Enviar un email a Roberto Barbieri">roberto.barbieri554@gmail.com</a><br>
+      🔗 LinkedIn: <a href="https://www.linkedin.com/in/roberto-barbieri554" target="_blank" title="Visita mi perfil de LinkedIn">roberto-barbieri554</a>
+    </p>
+</div>
 </div>
 
 </body>
 </html>
-
